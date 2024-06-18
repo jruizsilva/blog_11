@@ -20,28 +20,20 @@
                 <div class="mt-5">
 
                     <!-- Form -->
-                    <form action="{{ route('login.authenticate') }}" method="POST">
+                    <form action="{{ route('login.authenticate') }}" method="POST" class="grid gap-y-4">
                         @csrf
-                        <div class="grid gap-y-4">
-                            <!-- Form Group -->
-                            <div>
-                                <label for="email" class="block text-sm mb-2">Email address</label>
-                                <x-form.form-input type="email" id="email" name="email"
-                                    placeholder="test@gmail.com" />
-                            </div>
-                            <!-- End Form Group -->
+                        <x-form.input type="email" id="email" name="email" placeholder="test@gmail.com"
+                            label="Email" required />
+                        <x-form.input type="password" label="Contraseña" id="password" name="password"
+                            placeholder="********" required />
 
-                            <!-- Form Group -->
-                            <div>
-                                <label for="password" class="block text-sm mb-2">Password</label>
-                                <x-form.form-input type="password" id="password" name="password" placeholder="********" />
-                            </div>
-                            <!-- End Form Group -->
+                        <button type="submit"
+                            class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">Sign
+                            in</button>
 
-                            <button type="submit"
-                                class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">Sign
-                                in</button>
-                        </div>
+                        @if (session('errorTitle'))
+                            <x-alert-warning title="{{ session('errorTitle') }}" message="{{ session('errorMessage') }}" />
+                        @endif
                     </form>
                     <!-- End Form -->
                 </div>

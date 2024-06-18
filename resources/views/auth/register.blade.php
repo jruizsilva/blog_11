@@ -19,41 +19,20 @@
                 <div class="mt-5">
 
                     <!-- Form -->
-                    <form>
-                        <div class="grid gap-y-4">
-                            <!-- Form Group -->
-                            <div>
-                                <label for="email" class="block text-sm mb-2">Email address</label>
-                                <x-form.form-input type="email" id="email" name="email" />
-                            </div>
-                            <!-- End Form Group -->
-
-                            <!-- Form Group -->
-                            <div>
-                                <label for="password" class="block text-sm mb-2">Password</label>
-                                <x-form.form-input type="password" id="password" name="password" />
-                            </div>
-                            <!-- End Form Group -->
-
-                            <!-- Form Group -->
-                            <div>
-                                <label for="confirm-password" class="block text-sm mb-2">Confirm
-                                    Password</label>
-                                <x-form.form-input type="password" id="confirm-password" name="confirm-password" />
-                            </div>
-                            <p class="hidden text-xs text-red-600 mt-2" id="confirm-password-error">Password does not
-                                match the password</p>
-                        </div>
-                        <!-- End Form Group -->
+                    <form class="grid gap-y-4">
+                        <x-form.input type="email" id="email" name="email" label="Email" required />
+                        <x-form.input type="password" id="password" name="password" label="Password" required />
+                        <x-form.input type="password" id="confirm-password" name="confirm-password"
+                            label="Confirm
+                                    Password" required />
 
                         <button type="submit"
                             class="w-full py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">Sign
                             up</button>
+                    </form>
+                    <!-- End Form -->
                 </div>
-                </form>
-                <!-- End Form -->
             </div>
-        </div>
         </div>
     </main>
 @endsection
