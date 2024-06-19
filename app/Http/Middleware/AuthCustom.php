@@ -20,7 +20,7 @@ class AuthCustom
             if ($request->expectsJson()) {
                 return response()->json(['message' => 'Unauthorized'], 401);
             } else {
-                return redirect()->route('login.index');
+                return redirect()->route('login');
             }
         }
 

@@ -3,6 +3,7 @@
 'label' => 'Label',
 'type' => 'Text',
 'forgot_password' => false,
+'value' => ""
 ])
 <div>
   <div class="flex items-center justify-between">
@@ -20,6 +21,7 @@
     disabled:opacity-50 disabled:pointer-events-none pr-10',
     'type' => $type,
     'name' => $name,
+    'value' => old($name, $value)
     ]) !!}>
     @error($name)
     <div class="absolute right-2 top-3">
