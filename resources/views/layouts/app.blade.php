@@ -9,10 +9,8 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
-<body class="bg-gray-100">
-    <main>
-        @yield('content')
-    </main>
+<body class="h-screen bg-gray-100">
+    @yield('content')
 </body>
 
 </html>

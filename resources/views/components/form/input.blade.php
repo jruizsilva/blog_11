@@ -8,7 +8,8 @@
   <div class="flex items-center justify-between">
     <label for="{{ $name }}" class="block mb-1 text-sm">{{ $label }}</label>
     @if ($forgot_password)
-    <a class="text-sm font-medium text-blue-600 decoration-2 hover:underline" href="#">Forgot password?</a>
+    <a class="text-sm font-medium text-blue-600 decoration-2 hover:underline"
+      href="{{route('forgot-password.index')}}">Forgot password?</a>
     @endif
 
   </div>

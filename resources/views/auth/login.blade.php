@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Blog 11')
+@section('title', 'Login - Blog')
 
 @section('content')
 <main class="max-w-md p-6 mx-auto">
