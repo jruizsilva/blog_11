@@ -21,9 +21,9 @@
           <!-- Form -->
           <form action="{{route('password.reset')}}" method="POST">
             @csrf
+            <x-form.input type="hidden" name="token" :label="_('Token')" required value="{{$token}}" />
+            <x-form.input type="hidden" name="email" :label="_('Email')" required value="{{$email}}" />
             <div class="grid gap-y-4">
-              <x-form.input type="text" name="token" :label="_('Token')" required value="{{$token}}" />
-              <x-form.input type="email" name="email" :label="_('Email')" required value="{{$email}}" />
               <x-form.input type="password" name="password" :label="_('Password')" required placeholder="*********" />
               <x-form.input type="password" name="password_confirmation" :label="_('Confirm password')" required
                 placeholder="*********" />
