@@ -22,6 +22,6 @@ class RegisterController extends Controller
 
         User::create($registerData);
 
-        return redirect()->route('login')->with('success', 'Registration successful. Please login.');
+        return redirect()->route('login.index')->with('success', 'Registration successful. Please login.');
     }
 }

@@ -10,7 +10,7 @@
         <h1 class="block text-2xl font-bold text-gray-800">{{ _('Sign up') }}</h1>
         <p class="mt-2 text-sm text-gray-600">
           {{ _('Already have an account?') }}
-          <a href="{{ route('login') }}" class="font-medium text-blue-600 decoration-2 hover:underline">
+          <a href="{{ route('login.index') }}" class="font-medium text-blue-600 decoration-2 hover:underline">
             {{ _('Sign in here') }}
           </a>
         </p>

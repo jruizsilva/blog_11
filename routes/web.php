@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', fn () => view('welcome'))->name('home')->middleware(AuthCustom::class);
 
 Route::controller(LoginController::class)->middleware(GuestCustom::class)->group(function () {
-    Route::get('/login', 'index')->name('login');
+    Route::get('/login', 'index')->name('login.index');
     Route::post('/authenticate', 'authenticate')->name('login.authenticate');
 });
 

@@ -11,7 +11,7 @@
           <h1 class="block text-2xl font-bold text-gray-800">{{_("Forgot password?")}}</h1>
           <p class="mt-2 text-sm text-gray-600">
             {{_("Remember your password?")}}
-            <a class="font-medium text-blue-600 decoration-2 hover:underline" href="{{route('login')}}">
+            <a class="font-medium text-blue-600 decoration-2 hover:underline" href="{{route('login.index')}}">
               {{_("Sign in here")}}
             </a>
           </p>
