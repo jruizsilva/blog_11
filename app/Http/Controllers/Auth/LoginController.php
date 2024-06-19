@@ -28,15 +28,4 @@ class LoginController extends Controller
         return back()->with('errorTitle', 'Credenciales incorrectas')
             ->with('errorMessage', 'El correo o la contraseña son incorrectas');
     }
-
-    public function logout(Request $request): RedirectResponse
-    {
-        Auth::logout();
-
-        $request->session()->invalidate();
-
-        $request->session()->regenerateToken();
-
-        return redirect('/');
-    }
 }
