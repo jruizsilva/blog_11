@@ -28,7 +28,7 @@ class RegisterRequest extends FormRequest
             'password' => 'required|string|min:4|confirmed',
         ];
     }
-    public function prepareFormValidation()
+    public function prepareForValidation()
     {
         // $this->merge([
         // 'password' => bcrypt($this->password)
