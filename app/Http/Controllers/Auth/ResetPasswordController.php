@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdatePasswordRequest;
 use App\Models\User;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Http\Request;
@@ -29,16 +30,11 @@ class ResetPasswordController extends Controller
         return view('auth.reset-password', $data);
     }
 
-    public function updatePassword(Request $request)
+    public function updatePassword(UpdatePasswordRequest $request)
     {
-        $request->validate([
-            'token' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|min:4|confirmed',
-        ]);
-
+        $updatePasswordData = $request->validated();
         $status = Password::reset(
-            $request->only('email', 'password', 'password_confirmation', 'token'),
+            $updatePasswordData,
             function (User $user, string $password) {
                 $user->forceFill([
                     'password' => Hash::make($password)
