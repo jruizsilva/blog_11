@@ -19,7 +19,8 @@
                 <div class="mt-5">
 
                     <!-- Form -->
-                    <form class="grid gap-y-4">
+                    <form action="{{ route('register.store') }}" class="grid gap-y-4" method="POST">
+                        @csrf
                         <x-form.input id="name" name="name" label="Nombre" required />
                         <x-form.input id="last_name" name="last_name" label="Apellido" required />
                         <x-form.input type="email" id="email" name="email" label="Email" required />
@@ -37,4 +38,6 @@
             </div>
         </div>
     </main>
+
+
 @endsection
