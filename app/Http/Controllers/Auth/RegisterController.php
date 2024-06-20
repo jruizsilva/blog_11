@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterRequest;
 use App\Models\User;
+use App\Notifications\WelcomeNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Notification;
 
 class RegisterController extends Controller
 {
@@ -20,7 +22,9 @@ class RegisterController extends Controller
 
         $registerData['password'] = bcrypt($registerData['password']);
 
-        User::create($registerData);
+        $user = User::create($registerData);
+
+        Notification::send($user, new WelcomeNotification());
 
         return redirect()->route('login.index')->with('success', 'Registration successful. Please login.');
     }

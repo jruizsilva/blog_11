@@ -19,7 +19,7 @@
 
         <div class="mt-5">
           <!-- Form -->
-          <form action="{{route('password.reset')}}" method="POST">
+          <form action="{{route('reset-password.updatePassword')}}" method="POST">
             @csrf
             <x-form.input type="hidden" name="token" :label="_('Token')" required value="{{$token}}" />
             <x-form.input type="hidden" name="email" :label="_('Email')" required value="{{$email}}" />

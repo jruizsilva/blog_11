@@ -32,5 +32,5 @@ Route::controller(ForgotPasswordController::class)->middleware(GuestCustom::clas
 
 Route::controller(ResetPasswordController::class)->middleware(GuestCustom::class)->group(function () {
     Route::get('/reset-password', 'index')->name('reset-password.index');
-    Route::post('/reset-password', 'updatePassword')->name('password.reset');
+    Route::post('/reset-password', 'updatePassword')->name('reset-password.updatePassword');
 });

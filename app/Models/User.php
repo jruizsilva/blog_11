@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use App\Notifications\ResetPasswordNotification;
 use Illuminate\Auth\Passwords\CanResetPassword;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -54,4 +55,11 @@ class User extends Authenticatable
     //         $model->password = Hash::isHashed($model->password) ? $model->password : Hash::make($model->password);
     //     });
     // }
+
+    public function sendPasswordResetNotification($token):void{
+        $url = route('reset-password.updatePassword', 
+        ['token' => $token, 'email' => $this->email]);
+
+        $this->notify(new ResetPasswordNotification($url));
+    }
 }
