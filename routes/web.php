@@ -5,6 +5,8 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Middleware\AuthCustom;
 use App\Http\Middleware\GuestCustom;
 use Illuminate\Support\Facades\Route;
@@ -33,4 +35,9 @@ Route::controller(ForgotPasswordController::class)->middleware(GuestCustom::clas
 Route::controller(ResetPasswordController::class)->middleware(GuestCustom::class)->group(function () {
     Route::get('/reset-password', 'index')->name('reset-password.index');
     Route::post('/reset-password', 'updatePassword')->name('reset-password.updatePassword');
+});
+
+Route::name('dashboard.')->prefix('dashboard')->middleware(AuthCustom::class)->group(function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('index');
+    Route::resource('posts', PostController::class);
 });
