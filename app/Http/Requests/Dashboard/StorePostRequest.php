@@ -24,7 +24,7 @@ class StorePostRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'slug' => 'required|string|unique:posts',
+            'slug' => 'required|string|unique:posts,slug',
         ];
     }
     protected function prepareForValidation()

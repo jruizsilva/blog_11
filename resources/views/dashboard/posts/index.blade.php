@@ -33,16 +33,23 @@
                       {{ $post->id }}</td>
                     <td
                       class="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                      {{ $post->title }}</td>
+                      {{ Str::limit($post->title, 50) }}</td>
                     <td
                       class="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                      {{ $post->description }}</td>
+                      {{ Str::limit($post->description, 50) }}</td>
                     <td
                       class="px-6 py-4 text-sm font-medium whitespace-nowrap text-end">
                       <button type="button"
                         class="inline-flex items-center text-sm font-semibold text-blue-600 border border-transparent rounded-lg gap-x-2 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none">Edit</button>
-                      <button type="button"
-                        class="inline-flex items-center text-sm font-semibold text-blue-600 border border-transparent rounded-lg gap-x-2 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none">Delete</button>
+                      <form
+                        action="{{ route('dashboard.posts.destroy', $post) }}"
+                        method="POST" class="inline-flex items-center">
+                        @csrf
+                        @method('delete')
+                        <button type="submit"
+                          onclick="return confirm('Estas seguro?')"
+                          class="text-sm font-semibold text-blue-600 border border-transparent rounded-lg gap-x-2 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none">Delete</button>
+                      </form>
                     </td>
                   </tr>
                 @endforeach
