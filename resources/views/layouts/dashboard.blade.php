@@ -243,16 +243,13 @@
         <x-sidebar.logo />
       </div>
 
-      <nav x-data="{
-          isDashboard: window.location.pathname === '/dashboard'
-      }"
-        class="flex flex-col flex-wrap w-full p-6">
+      <nav class="flex flex-col flex-wrap w-full p-6">
         <ul class="space-y-1.5">
           <li>
             <x-sidebar.anchor label="Dashboard"
               route="dashboard.index" leftIcon="fa-solid fa-home" />
           </li>
-          <li x-data="{ open: false }">
+          <li x-data="{ open: '{{ Route::currentRouteName() }}' === 'dashboard.posts.index' }">
             <x-sidebar.button x-on:click="open = !open"
               label="Posts" leftIcon="fa-solid fa-layer-group"
               rightIcon="fa-solid fa-angle-down" />
@@ -280,7 +277,7 @@
     <div class="w-full md:ps-64">
       <div class="p-4 space-y-4 sm:p-6 sm:space-y-6">
         <!-- your content goes here ... -->
-        <div x-text="open"></div>
+        @yield('content')
       </div>
     </div>
   </div>
