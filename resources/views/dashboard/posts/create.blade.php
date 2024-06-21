@@ -23,9 +23,7 @@
           </div>
 
           <div class="sm:col-span-9">
-            <input id="af-account-email" type="email"
-              class="block w-full px-3 py-2 text-sm border border-gray-200 rounded-lg shadow-sm pe-11 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-              placeholder="Post title">
+            <x-input placeholder="Post title" />
           </div>
 
           <div class="sm:col-span-3">
@@ -36,15 +34,15 @@
           </div>
 
           <div class="sm:col-span-9">
-            <textarea id="af-account-bio"
-              class="block w-full px-3 py-2 text-sm border border-gray-200 rounded-lg focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-              rows="6" placeholder="Type your message..."></textarea>
+            <x-textarea class="min-h-32"
+              placeholder="Type your message..." />
           </div>
         </div>
         <!-- End Grid -->
 
         <div class="flex justify-end mt-5 gap-x-2">
           <button type="button"
+            x-on:click="window.location.href='{{ route('dashboard.posts.index') }}'"
             class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-800 bg-white border border-gray-200 rounded-lg shadow-sm gap-x-2 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none">
             Cancel
           </button>

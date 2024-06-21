@@ -10,8 +10,8 @@
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
-<body>
-  <div x-data="{ open: false }">
+<body class="h-screen bg-slate-50">
+  <div class="h-full" x-data="{ open: false }">
     <!-- ========== HEADER ========== -->
     <header
       class="sticky top-0 inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-[48] w-full bg-white border-b text-sm py-2.5 sm:py-4 md:ps-64">
@@ -224,7 +224,7 @@
 
     <!-- Sidebar -->
     <div x-on:click.away="open = false"
-      class="bg-slate-50 -translate-x-full transition-all duration-300 transform w-[260px] fixed inset-y-0 start-0 z-[60]  border-e border-gray-200"
+      class="bg-white -translate-x-full transition-all duration-300 transform w-[260px] fixed inset-y-0 start-0 z-[60]  border-e border-gray-200"
       x-bind:class="open ? 'block translate-x-0 end-auto bottom-0' :
           'hidden md:block md:translate-x-0 md:end-auto md:bottom-0'">
       <div class="px-8 pt-4">
@@ -262,7 +262,7 @@
     <!-- End Sidebar -->
 
     <!-- Content -->
-    <div class="w-full h-screen bg-slate-50 md:ps-64">
+    <div class="w-full md:ps-64">
       <div class="p-4 space-y-4 sm:p-6 sm:space-y-6">
         <!-- your content goes here ... -->
         @yield('content')
