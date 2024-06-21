@@ -11,7 +11,7 @@ class StorePostRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return auth()->check();
     }
 
     /**
@@ -22,7 +22,15 @@ class StorePostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'slug' => 'required|string|unique:posts',
         ];
+    }
+    protected function prepareForValidation()
+    {
+        $this->merge([
+            'slug' => str($this->title)->slug() . "-" . uniqid()
+        ]);
     }
 }

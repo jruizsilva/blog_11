@@ -237,7 +237,7 @@
             <x-sidebar.anchor label="Dashboard"
               route="dashboard.index" leftIcon="fa-solid fa-home" />
           </li>
-          <li x-data="{ open: '{{ Route::currentRouteName() }}' === 'dashboard.posts.index' }">
+          <li x-data="{ open: '{{ Route::currentRouteName() }}' === 'dashboard.posts.index' || '{{ Route::currentRouteName() }}' === 'dashboard.posts.create' }">
             <x-sidebar.button x-on:click="open = !open"
               label="Posts" leftIcon="fa-solid fa-layer-group"
               rightIcon="fa-solid fa-angle-down" />

@@ -12,7 +12,8 @@
         </h2>
       </div>
 
-      <form>
+      <form action="{{ route('dashboard.posts.store') }}" method="POST">
+        @csrf
         <!-- Grid -->
         <div class="grid gap-2 sm:grid-cols-12 sm:gap-6">
           <div class="sm:col-span-3">
@@ -23,7 +24,7 @@
           </div>
 
           <div class="sm:col-span-9">
-            <x-input placeholder="Post title" />
+            <x-input placeholder="Post title" name="title" />
           </div>
 
           <div class="sm:col-span-3">
@@ -35,7 +36,7 @@
 
           <div class="sm:col-span-9">
             <x-textarea class="min-h-32"
-              placeholder="Type your message..." />
+              placeholder="Type your message..." name="description" />
           </div>
         </div>
         <!-- End Grid -->
