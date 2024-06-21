@@ -26,7 +26,7 @@
           class="flex items-center justify-end w-full ms-auto sm:justify-between sm:gap-x-3 sm:order-3">
           <div class="sm:hidden">
             <button type="button"
-              class="w-[2.375rem] h-[2.375rem] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none">
+              class="w-[2.375rem] h-[2.375rem] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-slate-100 disabled:opacity-50 disabled:pointer-events-none">
               <svg class="flex-shrink-0 size-4"
                 xmlns="http://www.w3.org/2000/svg" width="24"
                 height="24" viewBox="0 0 24 24" fill="none"
@@ -39,27 +39,15 @@
           </div>
 
           <div class="hidden sm:block">
-            {{-- <div class="relative min-w-72 md:min-w-80">
-              <div class="absolute inset-y-0 z-20 flex items-center pointer-events-none start-0 ps-4">
-                <svg class="flex-shrink-0 text-gray-400 size-4" xmlns="http://www.w3.org/2000/svg" width="24"
-                  height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                  stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="11" cy="11" r="8" />
-                  <path d="m21 21-4.3-4.3" />
-                </svg>
-              </div>
-              <input type="text" id="icon" name="icon"
-                class="block w-full px-4 py-2 text-sm border-gray-200 rounded-lg ps-11 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none"
-                placeholder="Search" />
-            </div> --}}
             <div class="min-w-72 md:min-w-80">
-              <x-navbar.search icon="fa-solid fa-magnifying-glass" />
+              <x-input icon="fa-solid fa-magnifying-glass"
+                placeholder="Search" />
             </div>
           </div>
 
           <div class="flex flex-row items-center justify-end gap-2">
             <button type="button"
-              class="w-[2.375rem] h-[2.375rem] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none">
+              class="w-[2.375rem] h-[2.375rem] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-slate-100 disabled:opacity-50 disabled:pointer-events-none">
               <svg class="flex-shrink-0 size-4"
                 xmlns="http://www.w3.org/2000/svg" width="24"
                 height="24" viewBox="0 0 24 24" fill="none"
@@ -70,7 +58,7 @@
               </svg>
             </button>
             <button type="button"
-              class="w-[2.375rem] h-[2.375rem] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none"
+              class="w-[2.375rem] h-[2.375rem] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-slate-100 disabled:opacity-50 disabled:pointer-events-none"
               data-hs-offcanvas="#hs-offcanvas-right">
               <svg class="flex-shrink-0 size-4"
                 xmlns="http://www.w3.org/2000/svg" width="24"
@@ -84,7 +72,7 @@
             <div
               class="hs-dropdown [--placement:bottom-right] relative inline-flex">
               <button id="hs-dropdown-with-header" type="button"
-                class="w-[2.375rem] h-[2.375rem] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none">
+                class="w-[2.375rem] h-[2.375rem] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-slate-100 disabled:opacity-50 disabled:pointer-events-none">
                 <img
                   class="inline-block size-[38px] rounded-full ring-2 ring-white"
                   src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80"
@@ -103,7 +91,7 @@
                   </p>
                 </div>
                 <div class="py-2 mt-2 first:pt-0 last:pb-0">
-                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500"
+                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-slate-100 focus:ring-2 focus:ring-blue-500"
                     href="#">
                     <svg class="flex-shrink-0 size-4"
                       xmlns="http://www.w3.org/2000/svg"
@@ -117,7 +105,7 @@
                     </svg>
                     Newsletter
                   </a>
-                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500"
+                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-slate-100 focus:ring-2 focus:ring-blue-500"
                     href="#">
                     <svg class="flex-shrink-0 size-4"
                       xmlns="http://www.w3.org/2000/svg"
@@ -132,7 +120,7 @@
                     </svg>
                     Purchases
                   </a>
-                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500"
+                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-slate-100 focus:ring-2 focus:ring-blue-500"
                     href="#">
                     <svg class="flex-shrink-0 size-4"
                       xmlns="http://www.w3.org/2000/svg"
@@ -148,7 +136,7 @@
                     </svg>
                     Downloads
                   </a>
-                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-gray-100 focus:ring-2 focus:ring-blue-500"
+                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-slate-100 focus:ring-2 focus:ring-blue-500"
                     href="#">
                     <svg class="flex-shrink-0 size-4"
                       xmlns="http://www.w3.org/2000/svg"
@@ -236,7 +224,7 @@
 
     <!-- Sidebar -->
     <div x-on:click.away="open = false"
-      class="-translate-x-full transition-all duration-300 transform w-[260px] fixed inset-y-0 start-0 z-[60] bg-white border-e border-gray-200"
+      class="bg-slate-50 -translate-x-full transition-all duration-300 transform w-[260px] fixed inset-y-0 start-0 z-[60]  border-e border-gray-200"
       x-bind:class="open ? 'block translate-x-0 end-auto bottom-0' :
           'hidden md:block md:translate-x-0 md:end-auto md:bottom-0'">
       <div class="px-8 pt-4">
@@ -274,7 +262,7 @@
     <!-- End Sidebar -->
 
     <!-- Content -->
-    <div class="w-full md:ps-64">
+    <div class="w-full h-screen bg-slate-50 md:ps-64">
       <div class="p-4 space-y-4 sm:p-6 sm:space-y-6">
         <!-- your content goes here ... -->
         @yield('content')
