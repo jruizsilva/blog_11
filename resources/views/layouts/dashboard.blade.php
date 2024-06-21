@@ -16,7 +16,7 @@
       class="sticky top-0 inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-[48] w-full bg-white border-b text-sm py-2.5 sm:py-4 md:ps-64">
       <nav class="flex items-center w-full px-4 mx-auto basis-full sm:px-6" aria-label="Global">
         <div class="me-5 md:me-0 md:hidden">
-          <x-sidebar.logo/>
+          <x-sidebar.logo />
         </div>
 
         <div class="flex items-center justify-end w-full ms-auto sm:justify-between sm:gap-x-3 sm:order-3">
@@ -182,7 +182,7 @@
       class="-translate-x-full transition-all duration-300 transform w-[260px] fixed inset-y-0 start-0 z-[60] bg-white border-e border-gray-200"
       x-bind:class="open ? 'block translate-x-0 end-auto bottom-0' : 'hidden md:block md:translate-x-0 md:end-auto md:bottom-0'">
       <div class="px-8 pt-4">
-        <x-sidebar.logo/>
+        <x-sidebar.logo />
       </div>
 
       <nav x-data="{
@@ -190,20 +190,11 @@
       }" class="flex flex-col flex-wrap w-full p-6">
         <ul class="space-y-1.5">
           <li>
-            <a class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-neutral-700 rounded-lg hover:bg-gray-100" x-bind:class="isDashboard ? 'bg-gray-100' : ''"
-              href="{{route('dashboard.index')}}">
-              <svg class="flex-shrink-0 size-4" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
-                <polyline points="9 22 9 12 15 12 15 22" />
-              </svg>
-              Dashboard
-            </a>
+            <x-sidebar.button label="Dashboard" route="dashboard.index" icon="fa-solid fa-home"/>
           </li>
 
           <li>
-            <x-sidebar.button label="Posts" route="dashboard.posts.index"/>
+            <x-sidebar.button label="Posts" route="dashboard.posts.index" icon="fa-solid fa-layer-group"/>
           </li>
 
           <li class="hs-accordion" id="users-accordion">
