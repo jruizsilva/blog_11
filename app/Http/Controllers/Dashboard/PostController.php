@@ -19,7 +19,7 @@ class PostController extends Controller
     {
         /** @var User $user */
         $user = Auth::user();
-        $posts = $user->posts()->latest()->paginate(5);
+        $posts = $user->posts()->latest()->paginate(7);
         $data = [
             'posts' => $posts
         ];
