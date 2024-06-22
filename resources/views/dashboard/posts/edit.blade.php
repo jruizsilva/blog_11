@@ -10,6 +10,9 @@
         <h2 class="text-xl font-bold text-gray-800">
           Editar post #{{ $post->id }}
         </h2>
+        {{ $post->categories }}
+        <br>
+        {{ $errors }}
       </div>
 
       <form action="{{ route('dashboard.posts.update', $post) }}"
@@ -29,6 +32,30 @@
             <x-input placeholder="Post title" name="title"
               value="{{ old('title', $post->title) }}" />
             @error('title')
+              {{ $message }}
+            @enderror
+          </div>
+
+          <div class="sm:col-span-3">
+            <label for=""
+              class="inline-block text-sm text-gray-800 mt-2.5">Categories</label>
+          </div>
+
+          <div
+            class="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4 sm:col-span-9">
+            @foreach ($categories as $category)
+              <label for="category_{{ $category->id }}"
+                class="flex w-full px-3 py-2 text-sm bg-white border border-gray-200 rounded-lg">
+                <input type="checkbox"
+                  class="text-blue-600 border-gray-200 rounded shrink-0 focus:ring-blue-500"
+                  name="categories[]" id="category_{{ $category->id }}"
+                  {{ $post->categories->contains($category->id) ? 'checked' : '' }}
+                  value="{{ $category->id }}">
+                <span
+                  class="text-sm text-gray-500 ms-3">{{ $category->name }}</span>
+              </label>
+            @endforeach
+            @error('categories')
               {{ $message }}
             @enderror
           </div>

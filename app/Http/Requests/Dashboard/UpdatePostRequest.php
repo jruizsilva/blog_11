@@ -25,6 +25,8 @@ class UpdatePostRequest extends FormRequest
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'slug' => "required|string|unique:posts,slug,{$this->post->id}",
+            'categories' => 'required|array|min:1',
+            'categories.*' => 'exists:categories,id',
         ];
     }
     protected function prepareForValidation()
@@ -35,7 +37,7 @@ class UpdatePostRequest extends FormRequest
             $slug = str($this->title)->slug() . "-" . uniqid();
         }
         $this->merge([
-            'slug' => $slug
+            'slug' => $slug,
         ]);
     }
 }
