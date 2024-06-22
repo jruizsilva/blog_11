@@ -14,7 +14,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::latest()->paginate(7);
+        $posts = Post::where('user_id', auth()->user()->id)->latest()->paginate(7);
         $data = [
             'posts' => $posts
         ];
