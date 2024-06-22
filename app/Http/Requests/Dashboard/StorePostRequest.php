@@ -25,12 +25,14 @@ class StorePostRequest extends FormRequest
             'title' => 'required|string|max:255',
             'description' => 'required|string',
             'slug' => 'required|string|unique:posts,slug',
+            'categories' => 'required|array|min:1',
+            'categories.*' => 'exists:categories,id',
         ];
     }
     protected function prepareForValidation()
     {
         $this->merge([
-            'slug' => str($this->title)->slug() . "-" . uniqid()
+            'slug' => str($this->title)->slug() . "-" . uniqid(),
         ]);
     }
 }

@@ -28,6 +28,9 @@
 
           <div class="sm:col-span-9">
             <x-input placeholder="Post title" name="title" />
+            @error('title')
+              {{ $message }}
+            @enderror
           </div>
 
           <div class="sm:col-span-3">
@@ -42,12 +45,15 @@
                 class="flex w-full px-3 py-2 text-sm bg-white border border-gray-200 rounded-lg">
                 <input type="checkbox"
                   class="text-blue-600 border-gray-200 rounded shrink-0 focus:ring-blue-500"
-                  name="categories[]" id="category_{{ $category->id }}">
+                  name="categories[]" id="category_{{ $category->id }}"
+                  value="{{ $category->id }}">
                 <span
                   class="text-sm text-gray-500 ms-3">{{ $category->name }}</span>
               </label>
             @endforeach
-
+            @error('categories')
+              {{ $message }}
+            @enderror
           </div>
 
           <div class="sm:col-span-3">
@@ -60,6 +66,9 @@
           <div class="sm:col-span-9">
             <x-textarea class="min-h-32"
               placeholder="Type your message..." name="description" />
+            @error('description')
+              {{ $message }}
+            @enderror
           </div>
         </div>
         <!-- End Grid -->

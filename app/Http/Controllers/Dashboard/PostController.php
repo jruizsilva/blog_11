@@ -45,7 +45,8 @@ class PostController extends Controller
     {
         $createPostData = $request->validated();
         $createPostData['user_id'] = auth()->user()->id;
-        Post::create($createPostData);
+        $post = Post::create($createPostData);
+        $post->categories()->attach($request->get('categories'));
 
         return redirect()->route('dashboard.posts.index')->with('success', 'Post created successfully');
     }
