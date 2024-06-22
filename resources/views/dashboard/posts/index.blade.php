@@ -21,6 +21,9 @@
                     class="px-6 py-3 text-xs font-medium text-gray-500 uppercase text-start">
                     Description</th>
                   <th scope="col"
+                    class="px-6 py-3 text-xs font-medium text-gray-500 uppercase text-start">
+                    Categories</th>
+                  <th scope="col"
                     class="px-6 py-3 text-xs font-medium text-gray-500 uppercase text-end">
                     Action</th>
                 </tr>
@@ -33,10 +36,14 @@
                       {{ $post->id }}</td>
                     <td
                       class="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                      {{ Str::limit($post->title, 50) }}</td>
+                      {{ Str::limit($post->title, 20) }}</td>
                     <td
                       class="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                      {{ Str::limit($post->description, 50) }}</td>
+                      {{ Str::limit($post->description, 20) }}</td>
+                    <td
+                      class="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
+                      {{ $post->categories[0]->name }}
+                    </td>
                     <td
                       class="px-6 py-4 text-sm font-medium whitespace-nowrap text-end">
                       <a href="{{ route('dashboard.posts.edit', $post) }}"
