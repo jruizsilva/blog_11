@@ -39,8 +39,8 @@
                       {{ Str::limit($post->description, 50) }}</td>
                     <td
                       class="px-6 py-4 text-sm font-medium whitespace-nowrap text-end">
-                      <button type="button"
-                        class="inline-flex items-center text-sm font-semibold text-blue-600 border border-transparent rounded-lg gap-x-2 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none">Edit</button>
+                      <a href="{{ route('dashboard.posts.edit', $post) }}"
+                        class="inline-flex items-center text-sm font-semibold text-blue-600 border border-transparent rounded-lg gap-x-2 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none">Edit</a>
                       <form
                         action="{{ route('dashboard.posts.destroy', $post) }}"
                         method="POST" class="inline-flex items-center">

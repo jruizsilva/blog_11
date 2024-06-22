@@ -42,19 +42,14 @@ class PostController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(Post $post)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(Post $post)
     {
-        //
+        $data = [
+            'post' => $post
+        ];
+        return view('dashboard.posts.edit', $data);
     }
 
     /**
@@ -62,7 +57,9 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        //
+        $post->update($request->validated());
+        return redirect()->route('dashboard.posts.index')
+            ->with('success', 'Post updated successfully');
     }
 
     /**
@@ -71,6 +68,7 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         $post->delete();
-        return redirect()->route('dashboard.posts.index')->with('success', 'Post deleted successfully');
+        return redirect()->route('dashboard.posts.index')
+            ->with('success', 'Post deleted successfully');
     }
 }

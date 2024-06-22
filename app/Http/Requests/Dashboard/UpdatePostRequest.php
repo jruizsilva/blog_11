@@ -11,7 +11,7 @@ class UpdatePostRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return auth()->user()->id === $this->post->user_id;
     }
 
     /**
@@ -22,7 +22,20 @@ class UpdatePostRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'slug' => "required|string|unique:posts,slug,{$this->post->id}",
         ];
+    }
+    protected function prepareForValidation()
+    {
+        $titleChange = $this->request->get('title') !== $this->post->title;
+        $slug = $this->post->slug;
+        if ($titleChange) {
+            $slug = str($this->title)->slug() . "-" . uniqid();
+        }
+        $this->merge([
+            'slug' => $slug
+        ]);
     }
 }

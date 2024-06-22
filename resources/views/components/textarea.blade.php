@@ -14,5 +14,5 @@
       'class' =>
           'block w-full px-4 py-2 text-sm border border-gray-200 rounded-lg outline-1 outline-blue-500' .
           ($icon !== '' ? ' ps-11' : ''),
-  ]) !!}></textarea>
+  ]) !!}>{{ $slot }}</textarea>
 </div>

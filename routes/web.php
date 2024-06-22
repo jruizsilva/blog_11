@@ -39,5 +39,5 @@ Route::controller(ResetPasswordController::class)->middleware(GuestCustom::class
 
 Route::name('dashboard.')->prefix('dashboard')->middleware(AuthCustom::class)->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('index');
-    Route::resource('posts', PostController::class);
+    Route::resource('posts', PostController::class)->except('show');
 });
