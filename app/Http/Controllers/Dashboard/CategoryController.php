@@ -36,7 +36,7 @@ class CategoryController extends Controller
     {
         Category::create($request->validated());
 
-        return redirect()->route('categories.index')->with('success', 'Category created successfully');
+        return redirect()->route('dashboard.categories.index')->with('success', 'Category created successfully');
     }
 
     /**
@@ -56,7 +56,7 @@ class CategoryController extends Controller
     public function update(UpdateCategoryRequest $request, Category $category)
     {
         $category->update($request->validated());
-        return redirect()->route('categories.index')->with('success', 'Category updated successfully');
+        return redirect()->route('dashboard.categories.index')->with('success', 'Category updated successfully');
     }
 
     /**
@@ -65,6 +65,6 @@ class CategoryController extends Controller
     public function destroy(Category $category)
     {
         $category->delete();
-        return redirect()->route('categories.index')->with('success', 'Category deleted successfully');
+        return redirect()->route('dashboard.categories.index')->with('success', 'Category deleted successfully');
     }
 }
