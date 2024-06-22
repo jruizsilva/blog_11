@@ -70,7 +70,7 @@
           </div>
         </div>
       </div>
-      {{ $posts->links('pagination', ['posts' => $posts]) }}
+      {{ $posts->links('pagination') }}
     </div>
   </main>
 @endsection

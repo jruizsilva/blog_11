@@ -52,7 +52,7 @@
           </div>
         </div>
       </div>
-      {{-- {{ $posts->links('pagination', ['categories' => $categories]) }} --}}
+      {{ $categories->links('pagination') }}
     </div>
   </main>
 @endsection
