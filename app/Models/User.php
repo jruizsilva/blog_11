@@ -56,10 +56,18 @@ class User extends Authenticatable
     //     });
     // }
 
-    public function sendPasswordResetNotification($token):void{
-        $url = route('reset-password.updatePassword', 
-        ['token' => $token, 'email' => $this->email]);
+    public function sendPasswordResetNotification($token): void
+    {
+        $url = route(
+            'reset-password.updatePassword',
+            ['token' => $token, 'email' => $this->email]
+        );
 
         $this->notify(new ResetPasswordNotification($url));
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
     }
 }

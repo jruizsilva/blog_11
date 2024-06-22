@@ -10,7 +10,6 @@
         <h2 class="text-xl font-bold text-gray-800">
           Editar post #{{ $post->id }}
         </h2>
-        {{ $errors }}
       </div>
 
       <form action="{{ route('dashboard.posts.update', $post) }}"

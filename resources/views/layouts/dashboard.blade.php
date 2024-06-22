@@ -256,6 +256,25 @@
               </li>
             </ul>
           </li>
+          <li x-data="{ open: '{{ Route::currentRouteName() }}' === 'dashboard.categories.index' || '{{ Route::currentRouteName() }}' === 'dashboard.categories.create' }">
+            <x-sidebar.button x-on:click="open = !open"
+              label="Categories" leftIcon="fa-solid fa-layer-group"
+              rightIcon="fa-solid fa-angle-down" />
+
+            <ul class="pt-2 ps-3"
+              x-bind:class="open ? '' : 'hidden'">
+              <li>
+                <x-sidebar.anchor label="Crear nueva categoria"
+                  route="dashboard.categories.create"
+                  leftIcon="fa-solid fa-plus" />
+              </li>
+              <li>
+                <x-sidebar.anchor label="Lista de categorias"
+                  route="dashboard.categories.index"
+                  leftIcon="fa-solid fa-layer-group" />
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
     </div>
