@@ -4,7 +4,7 @@
 
 @section('content')
   <main>
-    <div class="flex flex-col">
+    <div class="flex flex-col gap-y-4">
       <div class="-m-1.5 overflow-x-auto">
         <div class="p-1.5 min-w-full inline-block align-middle">
           <div class="overflow-hidden">
@@ -58,6 +58,7 @@
           </div>
         </div>
       </div>
+      {{ $posts->links('pagination', ['posts' => $posts]) }}
     </div>
   </main>
 @endsection
