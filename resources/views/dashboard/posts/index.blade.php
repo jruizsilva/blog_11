@@ -42,7 +42,12 @@
                       {{ Str::limit($post->description, 20) }}</td>
                     <td
                       class="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                      {{ $post->categories[0]->name }}
+                      @foreach ($post->categories as $category)
+                        <span
+                          class="inline-flex items-center gap-x-1.5 py-1.5 px-3 rounded-full text-xs font-medium bg-gray-100 text-gray-800 select-none">
+                          {{ $category->name }}
+                        </span>
+                      @endforeach
                     </td>
                     <td
                       class="px-6 py-4 text-sm font-medium whitespace-nowrap text-end">
