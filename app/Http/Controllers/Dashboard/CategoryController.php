@@ -14,11 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::latest()->paginate(7);
-        $data = [
-            'categories' => $categories,
-        ];
-        return view('dashboard.categories.index', $data);
+        return view('dashboard.categories.index');
     }
 
     /**
@@ -26,7 +22,11 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('dashboard.categories.create');
+        $categories = Category::all();
+        $data = [
+            'categories' => $categories
+        ];
+        return view('dashboard.categories.create', $data);
     }
 
     /**

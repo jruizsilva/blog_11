@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Dashboard\StorePostRequest;
 use App\Http\Requests\Dashboard\UpdatePostRequest;
+use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -30,7 +31,11 @@ class PostController extends Controller
      */
     public function create()
     {
-        return view('dashboard.posts.create');
+        $categories = Category::all();
+        $data = [
+            'categories' => $categories,
+        ];
+        return view('dashboard.posts.create', $data);
     }
 
     /**

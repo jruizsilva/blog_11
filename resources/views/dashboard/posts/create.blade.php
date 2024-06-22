@@ -10,6 +10,9 @@
         <h2 class="text-xl font-bold text-gray-800">
           Crear nuevo post
         </h2>
+        {{ $categories[0] }}
+        <br>
+        {{ $errors }}
       </div>
 
       <form action="{{ route('dashboard.posts.store') }}" method="POST">
@@ -17,7 +20,7 @@
         <!-- Grid -->
         <div class="grid gap-2 sm:grid-cols-12 sm:gap-6">
           <div class="sm:col-span-3">
-            <label for="af-account-email"
+            <label for="title"
               class="inline-block text-sm text-gray-800 mt-2.5">
               Title
             </label>
@@ -28,7 +31,27 @@
           </div>
 
           <div class="sm:col-span-3">
-            <label for="af-account-bio"
+            <label for=""
+              class="inline-block text-sm text-gray-800 mt-2.5">Categories</label>
+          </div>
+
+          <div
+            class="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-4 sm:col-span-9">
+            @foreach ($categories as $category)
+              <label for="category_{{ $category->id }}"
+                class="flex w-full px-3 py-2 text-sm bg-white border border-gray-200 rounded-lg">
+                <input type="checkbox"
+                  class="text-blue-600 border-gray-200 rounded shrink-0 focus:ring-blue-500"
+                  name="categories[]" id="category_{{ $category->id }}">
+                <span
+                  class="text-sm text-gray-500 ms-3">{{ $category->name }}</span>
+              </label>
+            @endforeach
+
+          </div>
+
+          <div class="sm:col-span-3">
+            <label for="description"
               class="inline-block text-sm text-gray-800 mt-2.5">
               Description
             </label>
