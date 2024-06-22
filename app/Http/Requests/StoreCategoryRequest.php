@@ -30,7 +30,7 @@ class StoreCategoryRequest extends FormRequest
 
     public function prepareForValidation()
     {
-        $slug = Str::slug($this->name);
+        $slug = Str::slug($this->name) . "-" . uniqid();
         $this->merge([
             'slug' => $slug
         ]);

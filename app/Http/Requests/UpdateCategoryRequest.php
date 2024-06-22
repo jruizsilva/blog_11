@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Str;
 
 class UpdateCategoryRequest extends FormRequest
 {
@@ -11,7 +12,7 @@ class UpdateCategoryRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return auth()->check();
     }
 
     /**
@@ -22,7 +23,19 @@ class UpdateCategoryRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'required|string|max:50',
+            'slug' => 'required|string|max:50|unique:categories,slug,' . $this->category->id
         ];
+    }
+
+    public function prepareForValidation()
+    {
+        $slug = $this->category->slug;
+        if ($this->request->get('name') !== $this->name) {
+            $slug = Str::slug($this->name) . "-" . uniqid();
+        }
+        $this->merge([
+            'slug' => $slug
+        ]);
     }
 }
