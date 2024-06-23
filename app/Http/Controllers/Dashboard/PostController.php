@@ -43,7 +43,7 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        $createPostData = $request->validated();
+        $createPostData = $request->safe()->except('categories');
         $createPostData['user_id'] = auth()->user()->id;
         $post = Post::create($createPostData);
         $post->categories()->attach($request->get('categories'));
@@ -69,7 +69,7 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        $post->update($request->validated());
+        $post->update($request->safe()->except('categories'));
         $post->categories()->sync($request->get('categories'));
         return redirect()->route('dashboard.posts.index')
             ->with('success', 'Post updated successfully');
