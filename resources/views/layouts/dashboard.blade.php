@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
   <meta charset="utf-8" />
@@ -16,148 +16,45 @@
     <header
       class="sticky top-0 inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-[48] w-full bg-white border-b text-sm py-2.5 sm:py-4 md:ps-64">
       <nav
-        class="flex items-center w-full px-4 mx-auto basis-full sm:px-6"
-        aria-label="Global">
+        class="flex items-center justify-between w-full px-4 mx-auto basis-full sm:px-6">
         <div class="me-5 md:me-0 md:hidden">
           <x-sidebar.logo />
         </div>
 
-        <div
-          class="flex items-center justify-end w-full ms-auto sm:justify-between sm:gap-x-3 sm:order-3">
-          <div class="sm:hidden">
-            <button type="button"
-              class="w-[2.375rem] h-[2.375rem] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-slate-100 disabled:opacity-50 disabled:pointer-events-none">
-              <svg class="flex-shrink-0 size-4"
-                xmlns="http://www.w3.org/2000/svg" width="24"
-                height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="11" cy="11" r="8" />
-                <path d="m21 21-4.3-4.3" />
+        <div x-data="{ open: false }"
+          class="relative inline-block text-left">
+          <div>
+            <button type="button" x-on:click.stop="open = !open"
+              class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
+              {{ Auth::user()->name }}
+              <svg class="w-5 h-5 -mr-1 text-gray-400"
+                viewBox="0 0 20 20" fill="currentColor"
+                aria-hidden="true">
+                <path fill-rule="evenodd"
+                  d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                  clip-rule="evenodd" />
               </svg>
             </button>
           </div>
-
-          <div class="hidden sm:block">
-            <div class="min-w-72 md:min-w-80">
-              <x-input icon="fa-solid fa-magnifying-glass"
-                placeholder="Search" />
+          <div x-bind:class="open ? '' : 'hidden'"
+            x-on:click.away="open = false"
+            class="absolute right-0 z-10 w-56 mt-2 bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+            <div class="py-1">
+              <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+              <a href="{{ route('home') }}";
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Home</a>
+              <a href="{{ route('dashboard.index') }}"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Dashboard</a>
+              <a href="#"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Profile</a>
             </div>
-          </div>
-
-          <div class="flex flex-row items-center justify-end gap-2">
-            <button type="button"
-              class="w-[2.375rem] h-[2.375rem] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-slate-100 disabled:opacity-50 disabled:pointer-events-none">
-              <svg class="flex-shrink-0 size-4"
-                xmlns="http://www.w3.org/2000/svg" width="24"
-                height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
-                <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
-              </svg>
-            </button>
-            <button type="button"
-              class="w-[2.375rem] h-[2.375rem] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-slate-100 disabled:opacity-50 disabled:pointer-events-none"
-              data-hs-offcanvas="#hs-offcanvas-right">
-              <svg class="flex-shrink-0 size-4"
-                xmlns="http://www.w3.org/2000/svg" width="24"
-                height="24" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2"
-                stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-              </svg>
-            </button>
-
-            <div
-              class="hs-dropdown [--placement:bottom-right] relative inline-flex">
-              <button id="hs-dropdown-with-header" type="button"
-                class="w-[2.375rem] h-[2.375rem] inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-full border border-transparent text-gray-800 hover:bg-slate-100 disabled:opacity-50 disabled:pointer-events-none">
-                <img
-                  class="inline-block size-[38px] rounded-full ring-2 ring-white"
-                  src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80"
-                  alt="Image Description" />
-              </button>
-
-              <div
-                class="hs-dropdown-menu transition-[opacity,margin] duration hs-dropdown-open:opacity-100 opacity-0 hidden min-w-60 bg-white shadow-md rounded-lg p-2"
-                aria-labelledby="hs-dropdown-with-header">
-                <div class="px-5 py-3 -m-2 bg-gray-100 rounded-t-lg">
-                  <p class="text-sm text-gray-500">
-                    Signed in as
-                  </p>
-                  <p class="text-sm font-medium text-gray-800">
-                    james@site.com
-                  </p>
-                </div>
-                <div class="py-2 mt-2 first:pt-0 last:pb-0">
-                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-slate-100 focus:ring-2 focus:ring-blue-500"
-                    href="#">
-                    <svg class="flex-shrink-0 size-4"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24" height="24"
-                      viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" stroke-width="2"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <path
-                        d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
-                      <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
-                    </svg>
-                    Newsletter
-                  </a>
-                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-slate-100 focus:ring-2 focus:ring-blue-500"
-                    href="#">
-                    <svg class="flex-shrink-0 size-4"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24" height="24"
-                      viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" stroke-width="2"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <path
-                        d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z" />
-                      <path d="M3 6h18" />
-                      <path d="M16 10a4 4 0 0 1-8 0" />
-                    </svg>
-                    Purchases
-                  </a>
-                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-slate-100 focus:ring-2 focus:ring-blue-500"
-                    href="#">
-                    <svg class="flex-shrink-0 size-4"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24" height="24"
-                      viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round">
-                      <path
-                        d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242" />
-                      <path d="M12 12v9" />
-                      <path d="m8 17 4 4 4-4" />
-                    </svg>
-                    Downloads
-                  </a>
-                  <a class="flex items-center gap-x-3.5 py-2 px-3 rounded-lg text-sm text-gray-800 hover:bg-slate-100 focus:ring-2 focus:ring-blue-500"
-                    href="#">
-                    <svg class="flex-shrink-0 size-4"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24" height="24"
-                      viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round">
-                      <path
-                        d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2" />
-                      <circle cx="9" cy="7" r="4" />
-                      <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
-                      <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                    </svg>
-                    Team Account
-                  </a>
-                </div>
-              </div>
+            <div class="py-1" role="none">
+              <a href="#"
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Logout</a>
             </div>
           </div>
         </div>
+
       </nav>
     </header>
     <!-- ========== END HEADER ========== -->
@@ -238,12 +135,11 @@
               route="dashboard.index" leftIcon="fa-solid fa-home" />
           </li>
           <li x-data="{ open: '{{ Route::currentRouteName() }}' === 'dashboard.posts.index' || '{{ Route::currentRouteName() }}' === 'dashboard.posts.create' }">
-            <x-sidebar.button x-on:click="open = !open"
-              label="Posts" leftIcon="fa-solid fa-layer-group"
+            <x-sidebar.button x-on:click="open = !open" label="Posts"
+              leftIcon="fa-solid fa-layer-group"
               rightIcon="fa-solid fa-angle-down" />
 
-            <ul class="pt-2 ps-3"
-              x-bind:class="open ? '' : 'hidden'">
+            <ul class="pt-2 ps-3" x-bind:class="open ? '' : 'hidden'">
               <li>
                 <x-sidebar.anchor label="Crear nuevo post"
                   route="dashboard.posts.create"
