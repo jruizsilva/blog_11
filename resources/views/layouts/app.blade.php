@@ -13,7 +13,7 @@
   <!-- ========== HEADER ========== -->
   <header class="bg-white border-b text-sm py-2.5 sm:py-4">
     <div
-      class="flex items-center justify-between w-full px-4 gap-x-5 sm:px-6">
+      class="flex items-center justify-between w-full max-w-5xl px-4 mx-auto gap-x-5 sm:px-6">
       <div>
         <x-sidebar.logo />
       </div>

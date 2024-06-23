@@ -3,6 +3,8 @@
 @section('title', 'Blog')
 
 @section('content')
-  main
+  <div class="max-w-5xl p-4 mx-auto sm:p-6">
+    home
+  </div>
 
 @endsection

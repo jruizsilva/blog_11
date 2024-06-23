@@ -14,15 +14,15 @@
   <div class="h-full" x-data="{ open: false }">
     <!-- ========== HEADER ========== -->
     <header
-      class="sticky top-0 inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-[48] w-full bg-white border-b text-sm py-2.5 sm:py-4 md:ps-64">
+      class="sticky top-0 inset-x-0 flex flex-wrap sm:justify-start sm:flex-nowrap z-10 w-full bg-white border-b text-sm py-2.5 sm:py-4 md:ps-64">
       <nav
-        class="flex items-center justify-between w-full px-4 mx-auto basis-full sm:px-6">
+        class="flex items-center w-full px-4 mx-auto basis-full sm:px-6">
         <div class="me-5 md:me-0 md:hidden">
           <x-sidebar.logo />
         </div>
 
         <div x-data="{ open: false }"
-          class="relative inline-block text-left">
+          class="relative inline-block text-left ms-auto">
           <div>
             <button type="button" x-on:click.stop="open = !open"
               class="inline-flex w-full justify-center gap-x-1.5 rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50">
@@ -38,7 +38,7 @@
           </div>
           <div x-bind:class="open ? '' : 'hidden'"
             x-on:click.away="open = false"
-            class="absolute right-0 z-10 w-56 mt-2 bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+            class="absolute right-0 z-30 w-56 mt-2 bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div class="py-1">
               <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
               <a href="{{ route('home') }}";
@@ -121,7 +121,7 @@
 
     <!-- Sidebar -->
     <div x-on:click.away="open = false"
-      class="bg-white -translate-x-full transition-all duration-300 transform w-[260px] fixed inset-y-0 start-0 z-[60]  border-e border-gray-200"
+      class="bg-white -translate-x-full transition-all duration-300 transform w-[260px] fixed inset-y-0 start-0  z-20  border-e border-gray-200"
       x-bind:class="open ? 'block translate-x-0 end-auto bottom-0' :
           'hidden md:block md:translate-x-0 md:end-auto md:bottom-0'">
       <div class="px-8 pt-4">
