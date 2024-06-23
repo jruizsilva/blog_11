@@ -12,8 +12,7 @@ use App\Http\Middleware\AuthCustom;
 use App\Http\Middleware\GuestCustom;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', fn () => view('home'))->name('home')
-    ->middleware(AuthCustom::class);
+Route::get('/', fn () => view('home'))->name('home');
 
 Route::controller(LoginController::class)->middleware(GuestCustom::class)
     ->group(function () {
