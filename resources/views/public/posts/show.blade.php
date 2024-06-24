@@ -53,7 +53,7 @@
         <div>
           @foreach ($post->categories as $category)
             <a class="m-1 inline-flex items-center gap-1.5 py-2 px-3 rounded-full text-sm bg-gray-100 text-gray-800 hover:bg-gray-200"
-              href="#">
+              href="{{ route('public.categories.show', $category) }}">
               {{ $category->name }}
             </a>
           @endforeach

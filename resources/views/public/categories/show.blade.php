@@ -6,7 +6,8 @@
   <div
     class="flex flex-col max-w-5xl px-4 py-10 mx-auto sm:px-6 gap-y-6">
     <h2 class="text-lg text-gray-500 ">
-      Showing posts with category {{ $category->name }}
+      Showing posts with category <span
+        class="font-bold">{{ $category->name }}</span>
     </h2>
     <!-- Grid -->
     <div class="grid gap-2 lg:grid-cols-3">
