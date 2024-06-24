@@ -3,7 +3,8 @@
 @section('title', 'Blog')
 
 @section('content')
-  <div class="flex flex-col max-w-5xl p-5 mx-auto sm:p-10 gap-y-6">
+  <div
+    class="flex flex-col max-w-5xl px-4 py-10 mx-auto sm:px-6 gap-y-6">
     <!-- Grid -->
     <div class="grid gap-2 lg:grid-cols-3">
       @foreach ($posts as $post)
