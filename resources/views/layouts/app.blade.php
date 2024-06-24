@@ -44,18 +44,18 @@
             <div class="py-1">
               <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
               <a href="{{ route('public.posts.index') }}";
-                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Home</a>
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">{{ __('Home') }}</a>
               <a href="{{ route('dashboard.index') }}"
-                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Dashboard</a>
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">{{ __('Dashboard') }}</a>
               <a href="{{ route('user.edit') }}"
-                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Profile</a>
+                class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">{{ __('Profile') }}</a>
             </div>
             <div class="py-1" role="none">
               <form action="{{ route('logout') }}" method="post">
                 @csrf
                 <button
                   class="block w-full px-4 py-2 text-sm text-gray-700 text-start hover:bg-gray-100 hover:text-gray-900"
-                  type="submit">Logout</button>
+                  type="submit">{{ __('Logout') }}</button>
               </form>
             </div>
           </div>
