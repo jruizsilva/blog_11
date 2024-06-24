@@ -31,7 +31,7 @@ class UserController extends Controller
         $user = Auth::user();
         $updateUserData = $request->safe()->except('image');
         if ($request->hasFile('image')) {
-            $updateUserData['image'] = Storage::disk('users')->put('images', $request->file('image'));
+            $updateUserData['image'] = $request->file('image')->store('users/images');
         }
         $user->update($updateUserData);
         return redirect()->route('user.edit')->with('success', 'User updated successfully');

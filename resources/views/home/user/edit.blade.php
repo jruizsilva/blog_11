@@ -37,7 +37,7 @@
                 src="{{ $user->image }}" alt="Image Description">
               <div class="flex gap-x-2">
                 <div>
-                  <input type="file"
+                  <input type="file" name="image"
                     class="block w-full text-sm text-gray-500 file:me-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-gray-50 file:disabled:opacity-50 file:disabled:pointer-events-none">
                 </div>
               </div>
