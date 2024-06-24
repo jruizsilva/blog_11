@@ -6,12 +6,11 @@ namespace App\Models;
 
 use App\Notifications\ResetPasswordNotification;
 use Illuminate\Auth\Passwords\CanResetPassword;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Support\Facades\Hash;
-
-use function Laravel\Prompts\select;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable
 {
@@ -64,6 +63,13 @@ class User extends Authenticatable
         );
 
         $this->notify(new ResetPasswordNotification($url));
+    }
+
+    public function image(): Attribute
+    {
+        return new Attribute(function ($value) {
+            return $value ? Storage::url($value) : Storage::url('users/user.png');
+        });
     }
 
     public function posts()

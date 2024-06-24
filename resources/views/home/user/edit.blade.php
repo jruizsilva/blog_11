@@ -32,8 +32,7 @@
             <div class="flex items-center gap-5">
               <img
                 class="inline-block rounded-full size-16 ring-2 ring-white"
-                src="{{ Storage::url('users/user.png') }}"
-                alt="Image Description">
+                src="{{ $user->image }}" alt="Image Description">
               <div class="flex gap-x-2">
                 <div>
                   <button type="button"
