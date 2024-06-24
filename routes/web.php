@@ -51,4 +51,5 @@ Route::name('dashboard.')->prefix('dashboard')->middleware(AuthCustom::class)->g
 Route::controller(UserController::class)->middleware(AuthCustom::class)->group(function () {
     Route::get('user/edit', 'edit')->name('user.edit');
     Route::put('user/update', 'update')->name('user.update');
+    Route::delete('user/destroyImage', 'destroyImage')->name('user.destroyImage');
 });

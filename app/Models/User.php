@@ -68,7 +68,7 @@ class User extends Authenticatable
     public function image(): Attribute
     {
         return new Attribute(function ($value) {
-            return $value ? Storage::url($value) : Storage::url('users/user.png');
+            return $value ? Storage::url($value) : Storage::url('users/images/user.png');
         });
     }
 

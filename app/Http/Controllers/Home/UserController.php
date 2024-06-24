@@ -44,4 +44,13 @@ class UserController extends Controller
     {
         //
     }
+
+    public function destroyImage()
+    {
+        /** @var User $user */
+        $user = Auth::user();
+        Storage::delete($user->image);
+        $user->update(['image' => null]);
+        return redirect()->route('user.edit')->with('success', 'Image deleted successfully');
+    }
 }
