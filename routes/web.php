@@ -9,13 +9,15 @@ use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Controllers\Home\UserController;
+use App\Http\Controllers\Public\PostController as PublicPostController;
 use App\Http\Middleware\AuthCustom;
 use App\Http\Middleware\GuestCustom;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-})->name('home');
+Route::controller(PublicPostController::class)->group(function () {
+    Route::get('', 'index')->name('public.posts.index');
+    Route::get('posts/{post:slug}', 'show')->name('public.posts.show');
+});
 
 Route::controller(LoginController::class)->middleware(GuestCustom::class)
     ->group(function () {

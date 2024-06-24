@@ -51,6 +51,7 @@ class UserController extends Controller
         $user = Auth::user();
         Storage::delete($user->image);
         $user->update(['image' => null]);
-        return redirect()->route('user.edit')->with('success', 'Image deleted successfully');
+        return redirect()->route('user.edit')
+            ->with('success', 'Image deleted successfully');
     }
 }

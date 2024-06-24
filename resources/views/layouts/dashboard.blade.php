@@ -41,7 +41,7 @@
             class="absolute right-0 z-30 w-56 mt-2 bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div class="py-1">
               <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
-              <a href="{{ route('home') }}";
+              <a href="{{ route('public.posts.index') }}";
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Home</a>
               <a href="{{ route('dashboard.index') }}"
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Dashboard</a>

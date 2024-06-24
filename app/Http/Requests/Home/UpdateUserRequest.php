@@ -27,7 +27,21 @@ class UpdateUserRequest extends FormRequest
             'last_name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . Auth::user()->id,
             'image' => 'nullable|image|max:2048',
-            'username' => 'nullable|string|max:255'
+            'username' => 'nullable|string|max:255',
+            'slug' => 'required|string|max:255|unique:users,slug,' . Auth::user()->id
         ];
+    }
+
+    public function prepareForValidation()
+    {
+        $user = Auth::user();
+        $usernameChange = $this->request->get('username') !== $user->username;
+        $slug = $user->slug;
+        if ($usernameChange) {
+            $slug = str($this->request->get('username'))->slug() .  uniqid();
+        }
+        $this->merge([
+            'slug' => $slug
+        ]);
     }
 }

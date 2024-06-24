@@ -105,7 +105,7 @@
         <!-- End Grid -->
 
         <div class="flex justify-end mt-5 gap-x-2">
-          <a href="{{ route('home') }}"
+          <a href="{{ route('public.posts.index') }}"
             class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-800 bg-white border border-gray-200 rounded-lg shadow-sm gap-x-2 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none">
             Cancel
           </a>
