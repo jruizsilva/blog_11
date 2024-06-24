@@ -16,4 +16,12 @@ class PostController extends Controller
         ];
         return view('public.posts.index', $data);
     }
+
+    public function show(Post $post)
+    {
+        $data = [
+            'post' => $post
+        ];
+        return view('public.posts.show', $data);
+    }
 }

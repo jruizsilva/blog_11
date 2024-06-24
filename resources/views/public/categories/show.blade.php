@@ -1,10 +1,13 @@
 @extends('layouts.app')
 
-@section('title', 'Blog')
+@section('title', "Category $category->id")
 
 @section('content')
   <div
     class="flex flex-col max-w-5xl px-4 py-10 mx-auto sm:px-6 gap-y-6">
+    <h2 class="text-lg text-gray-500 ">
+      Showing posts with category {{ $category->name }}
+    </h2>
     <!-- Grid -->
     <div class="grid gap-2 lg:grid-cols-3">
       @foreach ($posts as $post)
@@ -37,5 +40,4 @@
     <!-- End Grid -->
     {{ $posts->links('pagination') }}
   </div>
-
 @endsection
