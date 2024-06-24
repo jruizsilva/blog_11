@@ -37,21 +37,8 @@
                 src="{{ $user->image }}" alt="Image Description">
               <div class="flex gap-x-2">
                 <div>
-                  <button type="button"
-                    class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-800 bg-white border border-gray-200 rounded-lg shadow-sm gap-x-2 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none">
-                    <svg class="flex-shrink-0 size-4"
-                      xmlns="http://www.w3.org/2000/svg" width="24"
-                      height="24" viewBox="0 0 24 24" fill="none"
-                      stroke="currentColor" stroke-width="2"
-                      stroke-linecap="round" stroke-linejoin="round">
-                      <path
-                        d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-                      <polyline points="17 8 12 3 7 8" />
-                      <line x1="12" x2="12" y1="3"
-                        y2="15" />
-                    </svg>
-                    Upload photo
-                  </button>
+                  <input type="file"
+                    class="block w-full text-sm text-gray-500 file:me-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-gray-50 file:disabled:opacity-50 file:disabled:pointer-events-none">
                 </div>
               </div>
             </div>
