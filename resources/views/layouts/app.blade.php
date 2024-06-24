@@ -20,7 +20,7 @@
 
       <nav class="text-sm font-medium text-gray-500">
         <a class="hover:text-black focus:outline-none focus:text-gray-500 md:ml-auto"
-          href="{{ route('public.posts.index') }}">Home</a>
+          href="{{ route('public.posts.index') }}">{{ __('Home') }}</a>
       </nav>
 
       @auth

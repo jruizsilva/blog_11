@@ -10,7 +10,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::latest()->paginate(5);
+        $posts = Post::with('categories')->latest()->paginate(5);
         $data = [
             'posts' => $posts
         ];
@@ -19,6 +19,7 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
+        $post->load('categories', 'user');
         $data = [
             'post' => $post
         ];
