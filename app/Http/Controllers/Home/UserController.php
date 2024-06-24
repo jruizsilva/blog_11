@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Home;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Home\UpdateUserRequest;
 use App\Models\User;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function edit()
     {
-        $user = auth()->user();
+        $user = Auth::user();
         $data = [
             'user' => $user
         ];
@@ -25,8 +25,10 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateUserRequest $request, User $user)
+    public function update(UpdateUserRequest $request)
     {
+        /** @var User $user */
+        $user = Auth::user();
         $updateUserData = $request->safe()->except('image');
         if ($request->hasFile('image')) {
             $updateUserData['image'] = Storage::disk('users')->put('images', $request->file('image'));

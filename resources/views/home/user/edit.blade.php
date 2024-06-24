@@ -13,9 +13,11 @@
         <p class="text-sm text-gray-600">
           Manage your name, password and account settings.
         </p>
+        <p class="text-sm text-gray-600">
+          {{ $errors }}
+        </p>
       </div>
-
-      <form action="{{ route('user.update', $user) }}" method="POST"
+      <form action="{{ route('user.update') }}" method="POST"
         enctype="multipart/form-data">
         @csrf
         @method('PUT')
@@ -122,7 +124,7 @@
             class="inline-flex items-center px-3 py-2 text-sm font-medium text-gray-800 bg-white border border-gray-200 rounded-lg shadow-sm gap-x-2 hover:bg-gray-50 disabled:opacity-50 disabled:pointer-events-none">
             Cancel
           </a>
-          <button type="button"
+          <button type="submit"
             class="inline-flex items-center px-3 py-2 text-sm font-semibold text-white bg-blue-600 border border-transparent rounded-lg gap-x-2 hover:bg-blue-700 disabled:opacity-50 disabled:pointer-events-none">
             Save changes
           </button>
