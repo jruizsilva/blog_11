@@ -8,11 +8,14 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\DashboardController;
 use App\Http\Controllers\Dashboard\PostController;
+use App\Http\Controllers\Home\UserController;
 use App\Http\Middleware\AuthCustom;
 use App\Http\Middleware\GuestCustom;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', fn () => view('home'))->name('home');
+Route::get('/', function () {
+    return view('home');
+})->name('home');
 
 Route::controller(LoginController::class)->middleware(GuestCustom::class)
     ->group(function () {
@@ -43,4 +46,9 @@ Route::name('dashboard.')->prefix('dashboard')->middleware(AuthCustom::class)->g
     Route::get('/', [DashboardController::class, 'index'])->name('index');
     Route::resource('posts', PostController::class)->except('show');
     Route::resource('categories', CategoryController::class)->except('show');
+});
+
+Route::controller(UserController::class)->middleware(AuthCustom::class)->group(function () {
+    Route::get('user/edit', 'edit')->name('user.edit');
+    Route::put('user/update', 'update')->name('user.update');
 });

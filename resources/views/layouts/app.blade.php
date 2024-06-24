@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="es">
 
 <head>
   <meta charset="utf-8">
@@ -39,8 +39,7 @@
               </svg>
             </button>
           </div>
-          <div x-bind:class="open ? '' : 'hidden'"
-            x-on:click.away="open = false"
+          <div x-on:click.away="open = false" x-show="open"
             class="absolute right-0 z-10 w-56 mt-2 bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div class="py-1">
               <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
@@ -48,7 +47,7 @@
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Home</a>
               <a href="{{ route('dashboard.index') }}"
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Dashboard</a>
-              <a href="#"
+              <a href="{{ route('user.edit') }}"
                 class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">Profile</a>
             </div>
             <div class="py-1" role="none">
@@ -77,6 +76,26 @@
   </header>
   <!-- ========== END HEADER ========== -->
   @yield('content')
+  @session('success')
+    <script>
+      const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.onmouseenter = Swal.stopTimer;
+          toast.onmouseleave = Swal.resumeTimer;
+        }
+      });
+      Toast.fire({
+        icon: "success",
+        title: @json(session('success'))
+      });
+    </script>
+  @endsession
+
 </body>
 
 </html>
