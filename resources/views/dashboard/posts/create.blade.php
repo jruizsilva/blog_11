@@ -14,8 +14,7 @@
         <h2 class="text-xl font-bold text-gray-800">
           Crear nuevo post
         </h2>
-        {{ $categories[0] }}
-        <br>
+        <br />
         {{ $errors }}
       </div>
 
@@ -50,40 +49,31 @@
                 <input type="checkbox"
                   class="text-blue-600 border-gray-200 rounded shrink-0 focus:ring-blue-500"
                   name="categories[]" id="category_{{ $category->id }}"
-                  value="{{ $category->id }}">
+                  value="{{ $category->id }}" />
                 <span
                   class="text-sm text-gray-500 ms-3">{{ $category->name }}</span>
               </label>
             @endforeach
+
             @error('categories')
               {{ $message }}
             @enderror
           </div>
 
-          {{-- <div class="sm:col-span-3">
+
+          <div>
             <label for="description"
               class="inline-block text-sm text-gray-800 mt-2.5">
               Description
             </label>
           </div>
 
-          <div class="sm:col-span-9">
-            <x-textarea class="min-h-32"
+          <div class="col-span-12 border rounded-lg">
+            {{-- <x-textarea class="min-h-32"
               placeholder="Type your message..." name="description" />
             @error('description')
               {{ $message }}
-            @enderror
-          </div> --}}
-
-          <div class="sm:col-span-3">
-            <label for="description"
-              class="inline-block text-sm text-gray-800 mt-2.5">
-              Description
-            </label>
-          </div>
-
-          <div class="py-6 border rounded-lg sm:col-span-9"
-            id="editorjs">
+            @enderror --}}
             <div id="editorjs"></div>
           </div>
 
