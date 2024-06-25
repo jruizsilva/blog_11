@@ -7,6 +7,7 @@ use App\Http\Requests\Dashboard\StorePostRequest;
 use App\Http\Requests\Dashboard\UpdatePostRequest;
 use App\Models\Category;
 use App\Models\Post;
+use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
@@ -43,12 +44,15 @@ class PostController extends Controller
      */
     public function store(StorePostRequest $request)
     {
-        $createPostData = $request->safe()->except('categories');
-        $createPostData['user_id'] = auth()->user()->id;
-        $post = Post::create($createPostData);
-        $post->categories()->attach($request->get('categories'));
+        return transactional(function () use ($request) {
+            $createPostData = $request->safe()->except('categories');
+            $createPostData['user_id'] = auth()->user()->id;
+            $post = Post::create($createPostData);
+            $post->categories()->attach($request->get('categories'));
 
-        return redirect()->route('dashboard.posts.index')->with('success', 'Post created successfully');
+            return redirect()->route('dashboard.posts.index')
+                ->with('success', 'Post created successfully');
+        });
     }
 
     /**
@@ -56,6 +60,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
+        Gate::authorize('edit', $post);
         $categories = Category::all();
         $data = [
             'post' => $post,
