@@ -74,10 +74,12 @@ class PostController extends Controller
      */
     public function update(UpdatePostRequest $request, Post $post)
     {
-        $post->update($request->safe()->except('categories'));
-        $post->categories()->sync($request->get('categories'));
-        return redirect()->route('dashboard.posts.index')
-            ->with('success', 'Post updated successfully');
+        return transactional(function () use ($request, $post) {
+            $post->update($request->safe()->except('categories'));
+            $post->categories()->sync($request->get('categories'));
+            return redirect()->route('dashboard.posts.index')
+                ->with('success', 'Post updated successfully');
+        });
     }
 
     /**
