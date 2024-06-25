@@ -7,7 +7,7 @@
 @endpush
 
 @section('content')
-  <main>
+  <main x-data="editorjs()">
     <!-- Card -->
     <div class="p-4 bg-white shadow rounded-xl sm:p-7">
       <div class="mb-8">
@@ -18,7 +18,8 @@
         {{ $errors }}
       </div>
 
-      <form action="{{ route('dashboard.posts.store') }}" method="POST">
+      <form action="{{ route('dashboard.posts.store') }}" method="POST"
+        x-on:submit.prevent="beforeSend" id="post-form">
         @csrf
         <!-- Grid -->
         <div class="grid gap-2 sm:grid-cols-12 sm:gap-6">
@@ -68,13 +69,19 @@
             </label>
           </div>
 
-          <div class="col-span-12 border rounded-lg">
+          <div class="col-span-12 ">
             {{-- <x-textarea class="min-h-32"
               placeholder="Type your message..." name="description" />
             @error('description')
               {{ $message }}
             @enderror --}}
-            <div id="editorjs"></div>
+            <input type="hidden" name="descripction" id="description"
+              x-bind:value="data" />
+            <div id="editorjs" class="border rounded-lg"></div>
+            @error('description')
+              <p class="py-2">{{ $message }}</p>
+            @enderror
+
           </div>
 
         </div>

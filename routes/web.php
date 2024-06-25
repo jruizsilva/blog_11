@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Dashboard\CategoryController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\MediaController;
 use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Controllers\Home\UserController;
 use App\Http\Middleware\AuthCustom;
@@ -20,6 +21,7 @@ Route::name('dashboard.')->prefix('dashboard')->middleware(AuthCustom::class)
         Route::get('/', [DashboardController::class, 'index'])->name('index');
         Route::resource('posts', PostController::class)->except('show');
         Route::resource('categories', CategoryController::class)->except('show');
+        Route::post('media/upload', [MediaController::class, 'upload'])->name('media.upload');
     });
 
 Route::controller(UserController::class)->middleware(AuthCustom::class)

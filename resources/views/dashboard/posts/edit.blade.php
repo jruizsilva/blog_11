@@ -2,8 +2,14 @@
 
 @section('title', 'Dashboard - Create post')
 
+@push('js')
+  @vite(['resources/js/editor.js'])
+@endpush
+
 @section('content')
-  <main>
+
+@section('content')
+  <main x-data="editorjs({{ $post->description }})">
     <!-- Card -->
     <div class="p-4 bg-white shadow rounded-xl sm:p-7">
       <div class="mb-8">
@@ -16,7 +22,7 @@
       </div>
 
       <form action="{{ route('dashboard.posts.update', $post) }}"
-        method="POST">
+        method="POST" x-on:submit.prevent="beforeSend" id="post-form">
         @csrf
         @method('put')
         <!-- Grid -->
@@ -67,14 +73,19 @@
             </label>
           </div>
 
-          <div class="sm:col-span-9">
-            <x-textarea class="min-h-32"
-              placeholder="Type your message..." name="description">
-              {{ old('description', $post->description) }}
-            </x-textarea>
+          <div class="col-span-12 ">
+            {{-- <x-textarea class="min-h-32"
+              placeholder="Type your message..." name="description" />
             @error('description')
               {{ $message }}
+            @enderror --}}
+            <input type="hidden" name="descripction" id="description"
+              x-bind:value="data" />
+            <div id="editorjs" class="border rounded-lg"></div>
+            @error('description')
+              <p class="py-2">{{ $message }}</p>
             @enderror
+
           </div>
         </div>
         <!-- End Grid -->
