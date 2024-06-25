@@ -2,6 +2,10 @@
 
 @section('title', 'Dashboard - Create post')
 
+@push('js')
+  @vite(['resources/js/editor.js'])
+@endpush
+
 @section('content')
   <main>
     <!-- Card -->
@@ -56,7 +60,7 @@
             @enderror
           </div>
 
-          <div class="sm:col-span-3">
+          {{-- <div class="sm:col-span-3">
             <label for="description"
               class="inline-block text-sm text-gray-800 mt-2.5">
               Description
@@ -69,7 +73,20 @@
             @error('description')
               {{ $message }}
             @enderror
+          </div> --}}
+
+          <div class="sm:col-span-3">
+            <label for="description"
+              class="inline-block text-sm text-gray-800 mt-2.5">
+              Description
+            </label>
           </div>
+
+          <div class="py-6 border rounded-lg sm:col-span-9"
+            id="editorjs">
+            <div id="editorjs"></div>
+          </div>
+
         </div>
         <!-- End Grid -->
 

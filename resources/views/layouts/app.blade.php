@@ -7,6 +7,8 @@
   <title>App Name - @yield('title')</title>
   @vite(['resources/css/app.css', 'resources/js/app.js'])
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  @stack('js')
+  @vite(['resources/js/alpine.js'])
 </head>
 
 <body class="h-screen bg-gray-100">

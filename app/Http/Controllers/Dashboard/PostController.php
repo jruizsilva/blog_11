@@ -7,7 +7,6 @@ use App\Http\Requests\Dashboard\StorePostRequest;
 use App\Http\Requests\Dashboard\UpdatePostRequest;
 use App\Models\Category;
 use App\Models\Post;
-use Exception;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
