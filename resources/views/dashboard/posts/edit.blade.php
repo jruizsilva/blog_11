@@ -79,7 +79,7 @@
             @error('description')
               {{ $message }}
             @enderror --}}
-            <input type="hidden" name="descripction" id="description"
+            <input type="hidden" name="description" id="description"
               x-bind:value="data" />
             <div id="editorjs" class="border rounded-lg"></div>
             @error('description')
