@@ -17,12 +17,13 @@
     <div
       class="flex items-center justify-between w-full max-w-5xl px-4 mx-auto gap-x-5 sm:px-6">
       <div>
-        <x-sidebar.logo />
+        <x-sidebar.logo wire:navigate />
       </div>
 
       <nav class="text-sm font-medium text-gray-500">
         <a class="hover:text-black focus:outline-none focus:text-gray-500 md:ml-auto"
-          href="{{ route('public.posts.index') }}">{{ __('Home') }}</a>
+          href="{{ route('public.posts.index') }}"
+          wire:navigate>{{ __('Home') }}</a>
       </nav>
 
       <div class="flex items-center gap-2">
@@ -51,12 +52,12 @@
             class="absolute right-0 z-10 w-32 mt-2 bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div class="py-1">
               <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
-              <a href="{{ url()->current() . '?lang=en' }}"
+              <a href="?lang=en" wire:navigate
                 class="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">
                 <img src="{{ asset('storage/countries/eeuu.png') }}"
                   class="size-5">
                 {{ __('English') }}</a>
-              <a href="{{ url()->current() . '?lang=es' }}"
+              <a href="?lang=es" wire:navigate
                 class="flex items-center gap-2 px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">
                 <img src="{{ asset('storage/countries/spain.png') }}"
                   class="size-5">
@@ -86,11 +87,12 @@
               class="absolute right-0 z-10 w-56 mt-2 bg-white divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
               <div class="py-1">
                 <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
-                <a href="{{ route('public.posts.index') }}";
+                <a href="{{ route('public.posts.index') }}"
+                  wire:navigate
                   class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">{{ __('Home') }}</a>
-                <a href="{{ route('dashboard.index') }}"
+                <a href="{{ route('dashboard.index') }}" wire:navigate
                   class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">{{ __('Dashboard') }}</a>
-                <a href="{{ route('user.edit') }}"
+                <a href="{{ route('user.edit') }}" wire:navigate
                   class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900">{{ __('Profile') }}</a>
               </div>
               <div class="py-1" role="none">
