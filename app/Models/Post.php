@@ -8,22 +8,22 @@ use Illuminate\Database\Eloquent\Model;
 
 class Post extends Model
 {
-    use HasFactory;
+  use HasFactory;
 
-    protected $guarded = [];
+  protected $guarded = [];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+  public function user()
+  {
+    return $this->belongsTo(User::class);
+  }
 
-    public function categories()
-    {
-        return $this->belongsToMany(Category::class);
-    }
+  public function categories()
+  {
+    return $this->belongsToMany(Category::class);
+  }
 
-    /**
-     * 0 => {#1554 ▼
+  /**
+   * 0 => {#1554 ▼
     +"id": SHQORvv1xO"
     +"type": "paragraph"
     +"data": {#1566 ▼
@@ -46,30 +46,33 @@ class Post extends Model
       +"items": array:2 [▶]
     }
   }
-     * 
-     */
+   * 
+   */
 
-    public function descriptionText(): Attribute
-    {
-        $jsonDescription = json_decode($this->description);
-        if (!is_object($jsonDescription)) {
-            return new Attribute(
-                get: fn () => $this->description,
-            );
-        }
-        $blocks = $jsonDescription->blocks ?? [];
-        $resultArr = [];
-        foreach ($blocks as $block) {
-            if ($block->type === 'paragraph' || $block->type === 'header') {
-                $resultArr[] = $block->data->text;
-            }
-            if ($block->type === 'list') {
-                $resultArr[] = implode(" ", $block->data->items);
-            }
-        }
-        $resultStr = implode(" ", $resultArr);
-        return new Attribute(
-            get: fn () => $resultStr,
-        );
+  public function descriptionText(): Attribute
+  {
+    $jsonDescription = json_decode($this->description);
+    if (!is_object($jsonDescription)) {
+      return new Attribute(
+        get: fn () => $this->description,
+      );
     }
+    $blocks = $jsonDescription->blocks ?? [];
+    $resultArr = [];
+    foreach ($blocks as $block) {
+      if ($block->type === 'paragraph' || $block->type === 'header' || $block->type === "quote") {
+        $resultArr[] = $block->data->text;
+      }
+      if ($block->type === 'image') {
+        $resultArr[] = $block->data->caption;
+      }
+      if ($block->type === 'list') {
+        $resultArr[] = implode(" ", $block->data->items);
+      }
+    }
+    $resultStr = implode(" ", $resultArr);
+    return new Attribute(
+      get: fn () => $resultStr,
+    );
+  }
 }

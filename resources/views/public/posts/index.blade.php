@@ -18,7 +18,7 @@
           </a>
           <p
             class="mt-1 text-gray-600 dark:text-neutral-400 line-clamp-3">
-            {{ $post->description }}
+            {{ $post->descriptionText }}
           </p>
 
           <div class="flex flex-wrap gap-2 mt-3">
