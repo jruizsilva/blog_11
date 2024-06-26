@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Storage;
 
 class MediaController extends Controller
 {
-    public function upload(Request $request)
+    public function store(Request $request)
     {
         $request->validate([
             'image' => 'required|image|max:2048'

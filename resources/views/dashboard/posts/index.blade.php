@@ -39,7 +39,7 @@
                       {{ Str::limit($post->title, 20) }}</td>
                     <td
                       class="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-                      {{ Str::limit($post->description, 20) }}</td>
+                      {{ Str::limit($post->descriptionText, 20) }}</td>
                     <td
                       class="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
                       @foreach ($post->categories as $category)

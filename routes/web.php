@@ -21,7 +21,7 @@ Route::name('dashboard.')->prefix('dashboard')->middleware(AuthCustom::class)
         Route::get('/', [DashboardController::class, 'index'])->name('index');
         Route::resource('posts', PostController::class)->except('show');
         Route::resource('categories', CategoryController::class)->except('show');
-        Route::post('media/upload', [MediaController::class, 'upload'])->name('media.upload');
+        Route::post('media/upload', [MediaController::class, 'store'])->name('media.upload');
     });
 
 Route::controller(UserController::class)->middleware(AuthCustom::class)
