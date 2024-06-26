@@ -9,7 +9,6 @@ export default defineConfig({
                 "resources/js/app.js",
                 "resources/js/editor.js",
                 "resources/js/editor-readonly.js",
-                "resources/js/alpine.js",
             ],
             refresh: true,
         }),
