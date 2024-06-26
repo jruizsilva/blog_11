@@ -13,13 +13,13 @@
 @section('content')
   <!-- Blog Article -->
   <div class="max-w-3xl pb-10 mx-auto">
-    <h2 class="my-4 text-2xl font-bold text-center md:text-3xl">
+    <h2 class="my-6 text-2xl font-bold text-center md:text-3xl">
       {{ $post->title }}
     </h2>
     <div
-      class="px-4 pt-6 pb-12 mx-auto bg-white border rounded-lg lg:pt-10 sm:px-6 lg:px-8">
+      class="flex flex-col gap-3 px-4 pt-6 pb-12 mx-auto bg-white border rounded-lg lg:pt-10 sm:px-6 lg:px-8">
       <!-- Avatar Media -->
-      <div class="flex items-center justify-between mb-2">
+      <div class="flex items-center justify-between">
         <div class="flex w-full sm:items-center gap-x-5 sm:gap-x-3">
           <div class="flex-shrink-0">
             <img class="rounded-full size-12"
@@ -49,7 +49,11 @@
       <!-- End Avatar Media -->
 
       <!-- Content -->
-      <div id="editorjs" x-data="editorjs({{ $post->description }})"></div>
+      @if (is_object(json_encode($post->description)))
+        <div id="editorjs" x-data="editorjs({{ $post->description }})"></div>
+      @else
+        <p class="text-lg text-gray-800">{{ $post->description }}</p>
+      @endif
 
       <div>
         @foreach ($post->categories as $category)
