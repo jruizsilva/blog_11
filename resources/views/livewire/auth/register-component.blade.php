@@ -14,22 +14,25 @@
       </div>
 
       <div class="mt-5">
+        {{ $errors }}
 
         <!-- Form -->
         <form wire:submit="register" class="grid gap-y-4"
           method="POST">
           @csrf
-          <x-form.input wire:model='name' id="name"
+          <x-form.input wire:model='registerForm.name' id="name"
             name="name" :label="__('Name')" required />
-          <x-form.input wire:model='last_name' id="last_name"
-            name="last_name" :label="__('Last name')" required />
-          <x-form.input wire:model='email' type="email"
+          <x-form.input wire:model='registerForm.last_name'
+            id="last_name" name="last_name" :label="__('Last name')"
+            required />
+          <x-form.input wire:model='registerForm.email' type="email"
             id="email" name="email" :label="__('Email')"
             required />
-          <x-form.input wire:model='password' type="password"
-            id="password" name="password" :label="__('Password')"
-            required />
-          <x-form.input wire:model='password_confirmation'
+          <x-form.input wire:model='registerForm.password'
+            type="password" id="password" name="password"
+            :label="__('Password')" required />
+          <x-form.input
+            wire:model='registerForm.password_confirmation'
             type="password" id="password_confirmation"
             name="password_confirmation" :label="__('Confirm password')" required />
 
