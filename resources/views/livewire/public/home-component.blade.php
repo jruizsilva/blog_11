@@ -3,7 +3,7 @@
   <!-- Grid -->
   <div class="grid gap-2 lg:grid-cols-3">
     @foreach ($this->posts as $post)
-      @livewire('post-card-component', ['post' => $post])
+      @livewire('common.post-card-component', ['post' => $post])
     @endforeach
   </div>
   <!-- End Grid -->
