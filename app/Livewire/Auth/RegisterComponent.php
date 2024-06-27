@@ -3,9 +3,6 @@
 namespace App\Livewire\Auth;
 
 use App\Livewire\Forms\RegisterForm;
-use App\Models\User;
-use App\Notifications\WelcomeNotification;
-use Illuminate\Support\Facades\Notification;
 use Livewire\Component;
 
 class RegisterComponent extends Component
