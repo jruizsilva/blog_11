@@ -7,13 +7,14 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Middleware\AuthCustom;
 use App\Http\Middleware\GuestCustom;
-use App\Livewire\LoginComponent;
+use App\Livewire\Auth\LoginComponent;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/login', LoginComponent::class)->name('login.index');
 
 Route::controller(LoginController::class)->middleware(GuestCustom::class)
     ->group(function () {
-        Route::get('/login', LoginComponent::class)->name('login.index');
-        Route::post('/authenticate', 'authenticate')->name('login.authenticate');
+        // Route::post('/authenticate', 'authenticate')->name('login.authenticate');
     });
 
 Route::controller(RegisterController::class)->middleware(GuestCustom::class)

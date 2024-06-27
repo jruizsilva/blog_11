@@ -8,7 +8,7 @@
         <p class="mt-2 text-sm text-gray-600">
           {{ _("Don't have an account yet?") }}
 
-          <a href="{{ route('register.index') }}"
+          <a href="{{ route('register.index') }}" wire:navigate
             class="font-medium text-blue-600 decoration-2 hover:underline">
             {{ __('Sign up here') }}
           </a>
@@ -18,7 +18,7 @@
       <div class="mt-5">
 
         <!-- Form -->
-        <form action="{{ route('login.authenticate') }}" method="POST"
+        <form wire:submit="authenticate" method="POST"
           class="grid gap-y-4">
           @csrf
           <x-form.input type="email" id="email" name="email"

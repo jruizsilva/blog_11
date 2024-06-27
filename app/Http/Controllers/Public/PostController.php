@@ -14,7 +14,7 @@ class PostController extends Controller
         $data = [
             'posts' => $posts
         ];
-        return view('public.posts.index', $data);
+        return view('public.home.index', $data);
     }
 
     public function show(Post $post)
