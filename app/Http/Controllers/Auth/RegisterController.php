@@ -26,6 +26,7 @@ class RegisterController extends Controller
 
         Notification::send($user, new WelcomeNotification());
 
-        return redirect()->route('login.index')->with('success', 'Registration successful. Please login.');
+        return redirect()->route('login.index')
+            ->with('success', 'Registration successful. Please login.');
     }
 }

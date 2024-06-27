@@ -3,6 +3,7 @@
 namespace App\Livewire\Auth;
 
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\Validate;
 use Livewire\Component;
 
 class LoginComponent extends Component
@@ -12,18 +13,21 @@ class LoginComponent extends Component
 
     protected $rules = [
         'email' => 'required|email',
-        'password' => 'required',
+        'password' => 'required|min:4',
     ];
 
     public function authenticate()
     {
         $this->validate();
-
-        if (Auth::attempt(['email' => $this->email, 'password' => $this->password])) {
+        $credentials = [
+            'email' => $this->email,
+            'password' => $this->password
+        ];
+        if (Auth::attempt($credentials)) {
             session()->regenerate();
 
-            return $this->redirectIntended(route('public.home.index'), true)
-                ->with('success', 'Has iniciado sesión correctamente');
+            session()->flash('success', 'Bienvenido ' . auth()->user()->name);
+            return $this->redirectIntended(route('public.home.index'), true);
         }
         return $this->addError('password', 'Credenciales incorrectas');
     }
