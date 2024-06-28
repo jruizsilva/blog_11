@@ -11,6 +11,7 @@ use App\Http\Controllers\Dashboard\MediaController;
 use App\Http\Controllers\Dashboard\PostController;
 use App\Http\Controllers\Home\UserController;
 use App\Http\Middleware\AuthCustom;
+use App\Livewire\User\ProfileComponent;
 use Illuminate\Support\Facades\Route;
 
 require __DIR__ . '/public.php';
@@ -24,9 +25,6 @@ Route::name('dashboard.')->prefix('dashboard')->middleware(AuthCustom::class)
         Route::post('media/upload', [MediaController::class, 'store'])->name('media.upload');
     });
 
-Route::controller(UserController::class)->middleware(AuthCustom::class)
-    ->group(function () {
-        Route::get('user/edit', 'edit')->name('user.edit');
-        Route::put('user/update', 'update')->name('user.update');
-        Route::delete('user/destroyImage', 'destroyImage')->name('user.destroyImage');
-    });
+Route::middleware(AuthCustom::class)->group(function () {
+    Route::get('user/edit', ProfileComponent::class)->name('user.edit');
+});
