@@ -17,12 +17,13 @@ class PostController extends Controller
      */
     public function index()
     {
-        /** @var User $user */
+        /** @var \App\Models\User $user */
         $user = Auth::user();
         $posts = $user->posts()->latest()->paginate(7);
         $data = [
             'posts' => $posts
         ];
+        dd($data);
         return view('dashboard.posts.index', $data);
     }
 

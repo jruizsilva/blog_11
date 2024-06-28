@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
   <meta charset="utf-8" />
   <meta name="csrf" content="{{ csrf_token() }}">
   <meta name="viewport"
     content="width=device-width, initial-scale=1.0" />
-  <title>@yield('title')</title>
+  <title>{{ $title ?? 'Page Title' }}</title>
   @vite(['resources/css/app.css', 'resources/js/app.js'])
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  @stack('css')
   @stack('js')
 </head>
 
@@ -182,7 +183,7 @@
     <div class="w-full md:ps-64">
       <div class="p-4 space-y-4 sm:p-6 sm:space-y-6">
         <!-- your content goes here ... -->
-        @yield('content')
+        {{ $slot }}
       </div>
     </div>
   </div>
